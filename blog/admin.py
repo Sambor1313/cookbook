@@ -1,3 +1,40 @@
 from django.contrib import admin
 
+from .models import Unit, Ingredient, Recipe, Kitchenware, IngredientsList, Package, BlogPost
+
 # Register your models here.
+class UnitAdmin(admin.ModelAdmin):
+    fields = ['name', 'symbol']
+    list_display = ('name', 'symbol')
+
+admin.site.register(Unit, UnitAdmin)
+
+class IngredientAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Ingredient, IngredientAdmin)
+
+class IngredientsListInline(admin.TabularInline):
+    model = IngredientsList
+    extra = 5
+class RecipeAdmin(admin.ModelAdmin):
+    inlines = [IngredientsListInline]
+
+admin.site.register(Recipe, RecipeAdmin)
+
+class KitchenwareAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Kitchenware, KitchenwareAdmin)
+
+
+class PackageAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Package, PackageAdmin)
+
+
+class BlogPostAdmin(admin.ModelAdmin):
+    list_display = ('title', 'publish_data', 'author')
+
+admin.site.register(BlogPost, BlogPostAdmin)
