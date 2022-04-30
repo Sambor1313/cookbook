@@ -5,11 +5,15 @@ from django.utils.translation import gettext as _
 # Create your models here.
 class Recipe(models.Model):
     name = models.CharField(max_length=64)
+    slug = models.SlugField(_("slug"), unique=True, null=False)
     content = models.TextField(_("content"))
+    # recipeCategory = models.ManyToManyField('RecipeCategory')
+    # recipeCuisine = 	The cuisine of the recipe (for example, French or Ethiopian)
     ingredients = models.ManyToManyField("Ingredient", 
                                          through='IngredientsList', 
                                          verbose_name=_("ingredients"))
     kitchenware = models.ManyToManyField("Kitchenware", verbose_name=_("Kitchenware"))
+    instructions = models.TextField(_("instructions"), help_text="Steps separator is semi-colon")
     class Meta:
         verbose_name = _("recipe")
         verbose_name_plural = _("recipes")
@@ -18,13 +22,11 @@ class Recipe(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("ingredient_detail", kwargs={"pk": self.pk})
-
-
+        return reverse("ingredient_detail", kwargs={"slug": self.slug})
 
 class Ingredient(models.Model):
-
     name = models.CharField(max_length=64, unique=True)
+    slug = models.SlugField(_("slug"), unique=True, null=False)
     content = models.TextField(_("content"))
     # Hierarchy and tags
     # Photo
@@ -61,7 +63,7 @@ class IngredientsList(models.Model):
     qty = models.FloatField(_("quantity"))
     unit = models.ForeignKey('Unit', related_name='unit', on_delete=models.PROTECT)
     ingredient = models.ForeignKey("Ingredient", verbose_name=_("ingredient"), on_delete=models.PROTECT)
-    recipie = models.ForeignKey("Recipe", verbose_name=_("recipie"), on_delete=models.CASCADE)
+    recipe = models.ForeignKey("Recipe", verbose_name=_("recipe"), on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = _("ingredients list")
@@ -107,8 +109,7 @@ class Package(models.Model):
 class BlogPost(models.Model):
 
     title = models.CharField(max_length=128)
-    #slug = models.SlugField(_("slug"))
-    publish_data = models.DateTimeField(_("publish date"))
+    publish_date = models.DateTimeField(_("publish date"))
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     short_content = models.TextField(_("short content"))
     content = models.TextField(_("content"))

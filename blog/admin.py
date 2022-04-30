@@ -35,6 +35,6 @@ admin.site.register(Package, PackageAdmin)
 
 
 class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'publish_data', 'author')
+    list_display = ('title', 'publish_date', 'author')
 
 admin.site.register(BlogPost, BlogPostAdmin)
