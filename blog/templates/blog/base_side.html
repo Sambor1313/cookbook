@@ -1,0 +1,55 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="container--sidebar">
+  <aside>
+    <div class="sidePanel">
+      <div class="sidePanel__search">
+        <input type="text" placeholder="szukaj"/>
+      </div>
+      {% block sidePanel %}
+      <div class="sidePanel__group">
+        {% block content_side_main %}
+        <h3 hidden>Główne filtry</h3>
+        <div><input type="checkbox" name="overTime" id="overTime"/><label for="overTime">Długi czas</label></div>
+        <div><input type="checkbox" name="overPrice" id="overTime"/><label for="overPrice">Drogie produkty</label></div>
+        <div><input type="checkbox" name="overPrice" id="overTime"/><label for="overPrice">Wegan wegan</label></div>
+        {% endblock content_side_main %}
+      </div>
+      <div class="sidePanel__group">
+        {% block content_side_ingedients %}
+          <h3 hidden>Ingredients</h3>
+          <input id="ingredients_search" type="text" name="ingredients " placeholder="Składnik">
+          <div class="ingredientsNodes">
+              <div class="ingredientsNodes__ingredient">Czosnek</div>
+              <div class="ingredientsNodes__ingredient">Jajka</div>
+              <div class="ingredientsNodes__ingredient">Wołowina</div>
+              <div class="ingredientsNodes__ingredient">Ser żółty</div>
+              <div class="ingredientsNodes__ingredient">Mąka</div>
+          </div>
+        {% endblock content_side_ingedients %}
+      </div>
+      <div class="sidePanel__group">
+        {% block content_side_kitchenware %}
+        <div class="sidePanel__group">
+          <h3 hidden>Kitchenware</h3>
+          <div class="kitchenwareNodes">
+              <div class="kitchenwareNodes__stuff" title="Patelnia">P</div>
+              <div class="kitchenwareNodes__stuff">U</div>
+              <div class="kitchenwareNodes__stuff">T</div>
+              <div class="kitchenwareNodes__stuff">L</div>
+          </div>
+        </div>
+        {% endblock content_side_kitchenware %}
+      </div>
+      {% endblock  %}
+    </div>
+  </aside>
+
+  <div class="container--content">
+  {% block content_side %}
+    Main content goes here
+  {% endblock  %}
+  </div>
+</div>
+{% endblock  %}

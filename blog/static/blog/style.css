@@ -1,0 +1,253 @@
+@import "normalization.css";
+
+:root {
+    --ligt-color: #BBB;
+    --white: white;
+    --main-color: #cddbcc;
+    --conrast-color: #c567b9;
+}
+
+body {
+    background-color: antiquewhite;
+    font-family: 'Arima Madurai', sans-serif;
+    /*font-family: 'Grape Nuts', cursive;*/
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 1.3;
+    color: #222;
+}
+
+.header {
+    height: 2em;
+    margin-bottom: 1em;
+    background-color: rgba(150, 150, 256, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+}
+
+.menu__item {
+    padding: 0.6em;
+    transition: 1000ms ease-in-out;
+}
+
+.menu__item.active {
+    outline: 5px solid #BBB;
+    outline-offset: .2em;
+}
+
+.menu__item:hover {
+    background-color: var(--main-color);
+}
+
+.menu__item a {
+    text-decoration: none;
+}
+
+.header__search {
+    border: 1px solid #BBB;
+}
+
+/* Dla testów */
+section,
+article {
+    border: 2px solid #BBB;
+    margin: 10px;
+}
+
+/* Footer */
+.footer__upper {
+    border-top: 2px solid #333;
+    padding: 16px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer__nav {
+    padding: 4em;
+    border: 2px solid #333;
+    width: 50%;
+    /* flex-grow: 1; */
+}
+
+.footermenu {
+    width: 200px;
+    border: 1px solid #333;
+    list-style: none;
+}
+
+.footermenu__item {
+    transition: 500ms ease-in-out;
+}
+
+.footermenu__item:hover {
+    transform: translateX(.5em);
+}
+
+.footermenu__item.active {
+    transform: translateX(.5em);
+    font-weight: 900;
+}
+
+.footermenu__item a {
+    text-decoration: none;
+}
+
+.footer__description {
+    padding: 4em;
+    border: 2px solid #333;
+    width: 50%;
+    /* flex-grow: 1; */
+}
+
+/* Content layout - with aside*/
+.container--sidebar {
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+
+.container--content {
+    max-width: 900px;
+}
+
+/*Image*/
+
+.imgblock {
+    align-content: center;
+}
+
+.imgblock__img {
+    width: 200px;
+    height: auto;
+}
+
+
+.footer__bottom {
+    font-size: .8em;
+    color: #333;
+    border-top: 1px dotted var(--ligt-color);
+    padding: .4em;
+    text-align: center;
+}
+
+/* Aside - filters */
+.sidePanel {
+    max-width: 300px;
+    margin: 0.5rem;
+    padding: 1em;
+    background-color: var(--main-color);
+}
+
+.sidePanel>div {
+    padding-bottom: .5em;
+    padding-top: .5em;
+    border-bottom: 1px solid var(--ligt-color);
+}
+
+.sidePanel>div:last-child {
+    border: none;
+}
+
+.ingredientsNodes {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    gap: 0.2em;
+}
+
+.ingredientsNodes__ingredient {
+    padding: .2em .4em .2em .4em;
+    background-color: var(--conrast-color);
+    border-radius: 50ch;
+}
+
+.kitchenwareNodes__stuff {
+    margin: .2em;
+    height: 2em;
+    width: 2em;
+    border: 1px solid var(--conrast-color);
+    border-radius: 1em;
+    text-align: center;
+    line-height: 2em;
+    transition: 300ms ease-in-out;
+}
+
+.kitchenwareNodes__stuff:hover {
+    cursor: pointer;
+    background-color: var(--conrast-color);
+}
+
+/* Recipe node */
+.recipe_node {
+    width: 100%;
+}
+
+/* Blog TOC */
+/*.blogTOC {}*/
+
+.blogTOC {
+    padding: .5rem;
+}
+
+.blogTOC__article:nth-child(2n) {
+    background-color: var(--ligt-color);
+}
+
+
+/* Package TOC */
+
+.packagesList__package {
+    border-top: 1px solid var(--conrast-color);
+}
+
+
+
+/*hierarchy*/
+
+#nestedlist,
+#nestedlist ul {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    list-style-type: none;
+    margin-left: 0;
+    /* text-indent: -4px; Not used due to class .connect below */
+}
+
+/* UL Layer 1 Rules */
+#nestedlist {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* UL Layer 2 Rules */
+#nestedlist ul {
+    font-size: 18px;
+    font-weight: normal;
+    margin-top: 3px;
+}
+
+/* UL Layer 3 Rules */
+#nestedlist ul ul {
+    font-size: 16px;
+}
+
+/* UL 4 Rules */
+#nestedlist ul ul ul {
+    font-size: 14px;
+}
+
+/* 
+ul li a {
+    text-decoration: none;
+    border: 1px solid #000;
+    border-width: 0 0 1px 1px;
+    border-radius: 0 0 0 10px;
+} */
+
+.connect {
+    border-left: 1px solid black;
+}

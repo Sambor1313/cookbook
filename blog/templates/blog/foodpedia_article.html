@@ -1,0 +1,28 @@
+{% extends 'blog/foodpedia.html' %}
+
+{% block content_side %}
+<article>
+    <h1>Foodpedia article - actually ingredient title</h1>
+
+    <div>
+        <p>
+            Krótki wstęp
+        </p>
+
+    </div>
+    <div>
+        {% lorem 2 p random %}
+    </div>
+    <section>
+        <h2>BHP</h2>
+        <p>Tutaj mogą się pojawić informacje związane z bezpieczeństwem i rady jak się z czymś obchodzić, np. jajka i unikanie sarmonelli.
+    </section>
+    <section>
+        <h2>Some cosy navigation, and related articles</h2>
+        <div>Parents</div>
+        <div>Children</div>
+    </section>
+</article>
+
+
+{% endblock  %}

@@ -1,0 +1,53 @@
+{% extends 'blog/base_side.html' %}
+
+{% block content_side %}
+<h1>Żarciopedia</h1>
+<p>
+    Próba usystematyzowania wiedzy o wszystkim co da się zjeść
+</p>
+<section>
+    <div class="">
+        <div class=""></div>
+    </div>
+</section>
+{% endblock  %}
+
+
+{% block sidePanel %}
+<div class="sidePanel__group">
+    <h4 >Głowna hierarchia</h4>
+    <ul id="nestedlist">
+        <li><a href="#">Gadgets and Gizmos</a>
+        <ul>
+            <li class="connect"><a href="#">Gadgets</a>
+            <ul>
+                <li><a href="#">Inspector Gadget</a></li>
+                <li><a href="#">Gadget Hackwrench</a></li>
+                <li><a href="#">Gadget Galaxy</a></li>
+                <li><a href="#">Daily Gadget </a></li>
+                <li><a href="#">Cheese Gadgets</a>
+                <ul>
+                    <li><a href="#">Bleu</a></li>
+                    <li><a href="#">Swiss</a></li>
+                    <li><a href="#">Havardi</a></li>
+                </ul>
+                </li>
+                <li><a href="#">Gadget Galaxy</a></li>
+                <li><a href="#">Daily Gadget </a></li>
+            </ul>
+            </li>
+            <li><a href="#">Gizmos</a>
+            <ul>
+                <li><a href="#">Gizmo the Mogwai</a></li>
+                <li><a href="#">The Transform Gizmo</a></li>
+                <li><a href="#">Gizmondo</a></li>
+            </ul>
+            </li>
+        </ul>
+        </li>
+    </ul>
+</div>
+<div class="sidePanel__group">
+    <h4 >Dodatkowe</h4>
+</div>
+{% endblock sidePanel %}

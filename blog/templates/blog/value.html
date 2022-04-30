@@ -1,0 +1,77 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Wartości</h1>
+<p>
+    Krótki wstęp
+</p>
+<article>
+    <h2> Hierarhia wartości </h2>
+    <ol>
+        <li>Szybko</li>
+        <li>Prosto</li>
+        <li>Mądrze</li>
+        <li>Tanio</li>
+        <li>Smacznie</li>
+    <ol>
+</article>
+<article>
+    <h2>Persona</h2>
+    <p>Czyli jak wyobrażam sobie czytelnika bloga?</p>
+    <div>
+        <p> Tutaj opis </p>
+    </div>
+</article>
+<article>
+    <h2>Misja i wizja</h2>
+    <blockquote>Misja jest taka, żeby mądrze jeść dobrze i się nie narobić</blockquote>
+    <blockquote>Tworząc Encyklopedię jedzenia ułatwiającą gotowanie... Prostych i szybkich przepisów</blockquote>
+</article>
+<section>
+    <h2>Sposób realizacji - narzędzia użyte na stronie</h2>
+    <article>
+        <h3>Proste narzędzia</h3>
+        <img style="width: 200px;" src="{% static 'blog/img/memeholder.png' %}"/>
+        <p>Nie wszyscy dysonują zaawansowanym sprzętem, zwłaszcza mieszkając na stancji lub w najmowanych mieszkaniu. Tworząc bloga w mieszkaniu nie mam piekarnika, a w arsenale kucharza amatora nie posiadam np. wałka<p>
+        <ul>
+            <li>[ic] Podstawowe sprzęty</li>
+            <li>[ic] Patelnia</li>
+            <li>[ic] Garnek</li>
+            <li>[ic] Piekarnik</li>
+            <li>[ic] Srebrny miecz wykuty w ogniu Wezuwiusza</li>
+        <ul>
+    </article>
+    <article>
+        <h3>Szybko</h3>
+        <img style="width: 200px;" src="{% static 'blog/img/memeholder.png' %}"/>
+        <p>Są świetni kucharze i blogerzy, którzy nauczą Cię zrobić pizzę w dwa dni! Ja pragnę skupić się na przepisach do wykonania w czasie krótszym niż logowanie i przeglądanie stron z żarciem na dowóz.<p>
+        <ul>
+            <li>[ic] Super szybko (&lt;10min)</li>
+            <li>[ic] Standard (&lt;30min)</li>
+            <li>[ic] Długo (&gt;30min)</li>
+        <ul>
+    </article>
+    <article>
+        <h3>Proste ingrediencje</h3>
+        <img style="width: 200px;" src="{% static 'blog/img/memeholder.png' %}"/>
+        <p>Żadnych jajek bazyliszka nadziewanych... Ingrediencje proste i ogólnie dostępne. Jeżeli który kolwiek składnik <p>
+        <ul>
+            <li>[ic] Pospolite</li>
+            <li>[ic] Oryginalne (mało uniwersalne np. sos )</li>
+            <li>[ic] Trwałe (np. mąka)</li>
+        <ul>
+    </article>
+    <article>
+        <h3>Co zrobić z 9/10 </h3>
+        <img style="width: 200px;" src="{% static 'blog/img/memeholder.png' %}"/>
+        <p>Czasem w przepisie jest weź pół langusty, problem robi się z drugą połową! Langusta popsuje się w kilka dni, stąd pomysł na Pakiety, gdzie każdy pakiet wykorzysta całe opakowania/sztuki nie-trwałych produktów<p>
+    </article>
+    <article>
+        <h3>Szybkie i mądre zakupy</h3>
+        <img style="width: 200px;" src="{% static 'blog/img/memeholder.png' %}"/>
+        <p>Strona pomaga w robieniu list zakupowych, mnożeniu przez liczbę osób, a także poprzez pakiety, pomoże zrobić jedne zakupy na kilka dni<p>
+    </article>
+<section>
+
+{% endblock  %}

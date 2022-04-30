@@ -1,0 +1,27 @@
+<div class="shopping">
+    <h4>Lista zakupów</h4>
+    <div class="shopping__size">
+        <input type="range" id="duration" name="duration" 
+        min="2" max="6" value="2" step="2"
+        oninput="this.nextElementSibling.value = this.value"/>
+        <output>2</output>
+        <label for="duration">People</label>
+    </div>
+    <div class="shopping_list">
+        <div class="shopping_list__ingredient">
+            <input type="checkbox"/>
+            <span> 2 sztuki </span>
+            <span>Mąki</span>
+        </div>
+        <div class="shopping_list__ingredient">
+            <input type="checkbox"/>
+            <span> 1 kg </span>
+            <span>Spagetti</span>
+        </div>
+        <div class="shopping_list__ingredient">
+            <input type="checkbox"/>
+            <span> 1/2 sztuki </span>
+            <span>Wody gazowanej</span>
+        </div>
+    </div>
+</div>

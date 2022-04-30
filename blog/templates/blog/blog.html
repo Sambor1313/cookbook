@@ -1,0 +1,66 @@
+{% extends 'blog/base_side.html' %}
+
+{% block content_side %}
+<h1>Blog</h1>
+<p>
+    Jeśli obawiasz się elaboratów o jedzeniu - to nie tutaj. Wiedza zorganizowana jest w "Żarciopedię", a Blog ma ułatwić stałym bywalcom odkrywanie nowinek na stronie.
+</p>
+<p>
+    Wpisy podzielono na cztery kategorie (możesz odfiltrować te dla Ciebie nieistotne):
+</p>
+<ul>
+    <li>No dobra, mogą zdażyć się artykuły</li>
+    <li>Jakie nowe informacje doszły: przepisy, produkty...</li>
+    <li>Jakie ulepszenia na stronie pomogą Ci poznawać ten świat</li>
+</ul>
+
+<section>
+    <div class="blogTOC">
+        <div class="blogTOC__article" itemscope itemtype="https://schema.org/Blog">
+            <h2 itemprop="headline">
+                <a href="{% url 'blog_post' 1 %}">
+                    Tytuł wpisu
+                </a>
+            </h2>
+            <div>Type</div>
+            <span itemprop="author">Imię</span> | <time itemprop="datePublished" dateTime="2022-04-25">25 kwi 2022</time>
+            <p itemprop="abstract">Tutaj skrót strótu do 55znaków? <a href="{% url 'blog_post' 1 %}">czytaj więcej --></a></p>
+        </div>
+        <div class="blogTOC__article" itemscope itemtype="https://schema.org/Blog">
+            <h2 itemprop="headline">
+                <a href="{% url 'blog_post' 1 %}">
+                    Tytuł wpisu
+                </a>
+            </h2>
+            <div>Type</div>
+            <span itemprop="author">Imię</span> | <time itemprop="datePublished" dateTime="2022-04-25">25 kwi 2022</time>
+            <p itemprop="abstract">Tutaj skrót strótu do 55znaków? <a href="{% url 'blog_post' 1 %}">czytaj więcej --></a></p>
+        </div>
+        <div class="blogTOC__article" itemscope itemtype="https://schema.org/Blog">
+            <h2 itemprop="headline">
+                <a href="{% url 'blog_post' 1 %}">
+                    Tytuł wpisu
+                </a>
+            </h2>
+            <div>Type</div>
+            <span itemprop="author">Imię</span> | <time itemprop="datePublished" dateTime="2022-04-25">25 kwi 2022</time>
+            <p itemprop="abstract">Tutaj skrót strótu do 55znaków? <a href="{% url 'blog_post' 1 %}">czytaj więcej --></a></p>
+        </div>
+    </div>
+    {% include "blog/fragments/pagination.html" with page_obj=page_obj%}
+</section>
+
+{% endblock  %}
+
+
+{% block sidePanel %}
+<div class="sidePanel__group">
+    Main tags
+</div>
+<div class="sidePanel__group">
+    Ingredients
+</div>
+<div class="sidePanel__group">
+    Kitchenware
+</div>
+{% endblock  %}

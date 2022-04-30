@@ -1,0 +1,54 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<article>
+  <div>
+    <h2>Głodny?</h2>
+    <p>Zapraszam Cię na wspólną podróż w odkrywania <s>świata gotowania</s> tego co można szybko zjeść ;)</h2>
+  </div>
+</article>
+
+<section>
+  <h2>Losowe przepisy <a>--></a></h2>
+  <p>Tutaj tylko 3, ale zapraszam do książki, gdzie znajdziesz wiele więcej prostych, szybkich i tanich przepisów</p>
+  {% include "blog/fragments/recipe_node.html" %}
+  {% include "blog/fragments/recipe_node.html" %}
+  {% include "blog/fragments/recipe_node.html" %}
+</section>
+
+
+<section>
+  <h2>Żarcie w zestawach</h2>
+  <p>Generalnie to plan na tydzień obiadu = jedne szybkie zakupy i zrównoważona dieta? Bredzę!</p>
+  <article>
+    <h3>Tyg. 12 - bazylia</h3>
+    <div title="Sprzęt kuchenny">[A] [B] [D]</div>
+    <p>Krótki wstęp, a może short-content?</p>
+  </article>
+</section>
+
+<article>
+  <h2>Wartości <a>--></a></h2>
+  <p>Dlaczego kolejna książka o gotowaniu - tym razem stawiam w 100% na prostotę i szybkość wykonania</p>
+  <p>No i idealnym czytelnikiem/użytkownikiem tego bloga jest: persona</p>
+</article>
+
+<section>
+  <div>
+    <h2>Żarciopedia <a>--></a></h2>
+    <p>Tutaj dowiesz się wszystkiego o najróżniejszych produktach i powiązanych z nimi tematami</p>
+  </div>
+</section>
+
+<section>
+  <div>
+    <h2>Blog <a>--></a></h2>
+    <article>
+      <h3>Zaczęło się</h3>
+      <p>Author | 13.04.2022</p>
+      <p>Krótki wstęp, a może short-content?</p>
+    </article>
+  </div>
+</section>
+
+{% endblock %}

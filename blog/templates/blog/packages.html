@@ -1,0 +1,58 @@
+{% extends 'blog/base_side.html' %}
+
+{% block content_side %}
+<h1>Paczki</h1>
+<p>
+    Krótki wstępsad as dasd asd as das dasd asd as dasd as dasd as d
+</p>
+
+<section>
+    <div class="packagesList">
+        <div class="packagesList__package">
+            <h1><a href="{% url 'package' 1 %}">Package Name</a></h1>
+            <div>Tutaj te wszystkie ikonki i kategorie</div>
+            <p>Package short description</p>
+            <div class="packageTOC">
+                <div class="packageTOC__recipe">
+                    Ogórkowa
+                </div>
+                <div class="packageTOC__recipe">
+                    Ogórkowa
+                </div>
+                <div class="packageTOC__recipe">
+                    Ogórkowa
+                </div>
+            </div>
+        </div>
+        <div class="packagesList__package">
+            <h1>Package Name</h1>
+            <div>Tutaj te wszystkie ikonki i kategorie</div>
+            <p>Package short description</p>
+            <div class="packageTOC">
+                <div class="packageTOC__recipe">
+                    Ogórkowa
+                </div>
+                <div class="packageTOC__recipe">
+                    Ogórkowa
+                </div>
+                <div class="packageTOC__recipe">
+                    Ogórkowa
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock  %}
+
+
+{% block content_side_main %}
+    {{ block.super }}
+    <h3 hidden>Main tags</h3>
+    <input type="range" id="duration" name="duration" 
+    min="2" max="7" value="4" step="1"
+    oninput="this.nextElementSibling.value = this.value"/>
+    <output>4</output>
+    <label for="duration">Days</label>
+{% endblock content_side_main %}

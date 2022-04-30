@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Cookbook by MNIS.pl</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}" />
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@200;700&family=Grape+Nuts&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <header>
+    {% block header %} 
+      <div class="header">
+        <nav aria-labelledby="primary-navigation">
+          <ul class="menu">
+            <li class="menu__item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+              <a href='/'>
+                Strona główna
+              </a>
+            </li>
+            <li class="menu__item {% if request.resolver_match.url_name == 'recipes' %}active{% endif %}">
+              <a href='/recipes'>
+                Przepisy
+              </a>
+            </li>
+            <li class="menu__item {% if request.resolver_match.url_name == 'packages' %}active{% endif %}">
+              <a href='/packages'>
+                Pakiety
+              </a>
+            </li>
+            <li class="menu__item {% if request.resolver_match.url_name == 'foodpedia' %}active{% endif %}">
+              <a href='/foodpedia'>
+                Żarłopedia
+              </a>
+            </li>
+            <li class="menu__item {% if request.resolver_match.url_name == 'value' %}active{% endif %}">
+              <a href='/value'>
+                Wartości
+              </a>
+            </li>
+            <li class="menu__item {% if request.resolver_match.url_name == 'blog' %}active{% endif %}">
+              <a href='/blog'>
+                Blog
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header__search">
+          <form>
+            <input type="text" placeholder="Wyszukaj"/>
+            <button type="submit">O</button>
+          </form>
+        </div>
+      </div>
+    {% endblock %}
+    </header>
+
+    <main style="min-height: 500px;">
+      {% block content %}Hire goes content{% endblock %}
+    </main>
+
+    <footer>
+      <div class="footer">
+        <div class="footer__upper">
+          <div class="footer__nav">
+            <nav aria-labelledby="footer-navigation">
+              <div class="footer__navigation">
+                <ul class="footermenu">
+                  <li class="footermenu__item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+                    <a href='/'>
+                      Strona główna
+                    </a>
+                  </li>
+                  <li class="footermenu__item {% if request.resolver_match.url_name == 'recipes' %}active{% endif %}">
+                    <a href='/recipes'>
+                      Przepisy
+                    </a>
+                  </li>
+                  <li class="footermenu__item {% if request.resolver_match.url_name == 'packages' %}active{% endif %}">
+                    <a href='/packages'>
+                      Pakiety
+                    </a>
+                  </li>
+                  <li class="footermenu__item {% if request.resolver_match.url_name == 'foodpedia' %}active{% endif %}">
+                    <a href='/foodpedia'>
+                      Żarłopedia
+                    </a>
+                  </li>
+                  <li class="footermenu__item {% if request.resolver_match.url_name == 'value' %}active{% endif %}">
+                    <a href='/value'>
+                      Wartości
+                    </a>
+                  </li>
+                  <li class="footermenu__item {% if request.resolver_match.url_name == 'blog' %}active{% endif %}">
+                    <a href='/blog'>
+                      Blog
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+            <figure>
+              <blockquote>Jedzenie dietetyczne można zjeść tylko wtedy, gdy czekasz na ugotowanie steku.</blockquote>
+              <figcaption citi="https://pl.wikipedia.org/wiki/Julia_Child"> Julia Child </figcaption>
+            </figure>
+          </div>
+          <div class="footer__description">
+            <p>To nie jest strona z przepisami.</p>
+            <p>A to nie jest kucharz.</p>
+            <figure class="imgblock">
+              <img class="imgblock__img" src="{% static 'blog/img/Portrait-placeholder.png' %}" alt="Sambor">
+              <figcaption>Mam na imię Sambor</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="footer__bottom">Sambor Maciejak - mnis.pl | &copy; 2022</div>
+      </div>
+    </footer>
+
+    <script src="" async defer></script>
+  </body>
+</html>

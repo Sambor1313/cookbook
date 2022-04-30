@@ -1,0 +1,16 @@
+{% extends 'blog/packages.html' %}
+
+{% block content_side %}
+<h1>Paczka nr. 21</h1>
+<p>
+    Krótki wstęp
+</p>
+{% include "blog/fragments/ingredients_list.html" %}
+
+<div>
+    {% include "blog/fragments/recipe_node.html" %}
+    {% include "blog/fragments/recipe_node.html" %}
+    {% include "blog/fragments/recipe_node.html" %}
+<div>
+
+{% endblock  %}

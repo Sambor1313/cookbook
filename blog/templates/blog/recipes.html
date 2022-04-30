@@ -1,0 +1,15 @@
+{% extends 'blog/base_side.html' %}
+
+{% block content_side %}
+<h1>Przepisy</h1>
+<p>
+    Krótki wstęp
+</p>
+<section>
+    {% for recipe in test %}
+        {% include "blog/fragments/recipe_node.html" %}
+    {% endfor %}
+</section>
+
+
+{% endblock  %}

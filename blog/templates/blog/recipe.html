@@ -1,0 +1,22 @@
+{% extends 'blog/recipes.html' %}
+
+{% block content_side %}
+<article>
+    <h1>Przepis - tytuł</h1>
+    <div>[I][C][O]</div>
+    {% include "blog/fragments/ingredients_list.html" %}
+    <ol>
+        <li>Pokrój kukurydzę</li>
+        <li>Obierz truskawki</li>
+        <li>Zmierzw sałatę</li>
+        <li>Nastaw mikrofalę na 200&deg;C</li>
+        <li>Powtykaj kukurdzę do kolby</li>
+    </ol>
+    <div>
+        <h2>Ciekwostki</h2>
+        <p>Tutaj różne utyskiwania i ciekawostki...</p> {% lorem 2 p random %}
+    </div>
+</article>
+
+
+{% endblock  %}
