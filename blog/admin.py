@@ -10,7 +10,7 @@ class UnitAdmin(admin.ModelAdmin):
 admin.site.register(Unit, UnitAdmin)
 
 class IngredientAdmin(admin.ModelAdmin):
-    pass
+    prepopulated_fields = {"slug": ("name",)}
 
 admin.site.register(Ingredient, IngredientAdmin)
 
@@ -18,6 +18,7 @@ class IngredientsListInline(admin.TabularInline):
     model = IngredientsList
     extra = 5
 class RecipeAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("name",)}
     inlines = [IngredientsListInline]
 
 admin.site.register(Recipe, RecipeAdmin)
