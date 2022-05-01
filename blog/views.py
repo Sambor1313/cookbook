@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator
 
 from blog.models import BlogPost
@@ -30,14 +31,21 @@ def value(request):
     return render(request, 'blog/value.html', context={})
 
 def blog(request):
-    blog_list = BlogPost.objects.all().order_by('publish_date')
+    blog_list = BlogPost.objects.filter(publish_date__isnull=False).order_by('-publish_date')
     paginator = Paginator(blog_list, 1)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'blog/blog.html', context={'page_obj': page_obj})
+    return render(request, 'blog/blog.html', context={
+        'page_obj': page_obj,
+        'filters': True
+    })
 
 def blog_article(request, article_id):
-    return render(request, 'blog/blog_article.html', context={})
+    blog_post = get_object_or_404(BlogPost, pk=article_id)
+    return render(request, 'blog/blog_article.html', context={
+        'blog_post': blog_post,
+        'filters': True
+    })
 
 def search_list(request, fraze):
     return render(request, 'blog/search_list.html', context={})

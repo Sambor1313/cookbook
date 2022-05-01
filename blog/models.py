@@ -109,7 +109,7 @@ class Package(models.Model):
 class BlogPost(models.Model):
 
     title = models.CharField(max_length=128)
-    publish_date = models.DateTimeField(_("publish date"))
+    publish_date = models.DateTimeField(_("publish date"), blank=True, null=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     short_content = models.TextField(_("short content"))
     content = models.TextField(_("content"))

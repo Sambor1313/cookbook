@@ -9,43 +9,18 @@
     Wpisy podzielono na cztery kategorie (możesz odfiltrować te dla Ciebie nieistotne):
 </p>
 <ul>
-    <li>No dobra, mogą zdażyć się artykuły</li>
     <li>Jakie nowe informacje doszły: przepisy, produkty...</li>
     <li>Jakie ulepszenia na stronie pomogą Ci poznawać ten świat</li>
+    <li>No dobra, mogą zdażyć się artykuły</li>
 </ul>
 
 <section>
     <div class="blogTOC">
-        <div class="blogTOC__article" itemscope itemtype="https://schema.org/Blog">
-            <h2 itemprop="headline">
-                <a href="{% url 'blog_post' 1 %}">
-                    Tytuł wpisu
-                </a>
-            </h2>
-            <div>Type</div>
-            <span itemprop="author">Imię</span> | <time itemprop="datePublished" dateTime="2022-04-25">25 kwi 2022</time>
-            <p itemprop="abstract">Tutaj skrót strótu do 55znaków? <a href="{% url 'blog_post' 1 %}">czytaj więcej --></a></p>
-        </div>
-        <div class="blogTOC__article" itemscope itemtype="https://schema.org/Blog">
-            <h2 itemprop="headline">
-                <a href="{% url 'blog_post' 1 %}">
-                    Tytuł wpisu
-                </a>
-            </h2>
-            <div>Type</div>
-            <span itemprop="author">Imię</span> | <time itemprop="datePublished" dateTime="2022-04-25">25 kwi 2022</time>
-            <p itemprop="abstract">Tutaj skrót strótu do 55znaków? <a href="{% url 'blog_post' 1 %}">czytaj więcej --></a></p>
-        </div>
-        <div class="blogTOC__article" itemscope itemtype="https://schema.org/Blog">
-            <h2 itemprop="headline">
-                <a href="{% url 'blog_post' 1 %}">
-                    Tytuł wpisu
-                </a>
-            </h2>
-            <div>Type</div>
-            <span itemprop="author">Imię</span> | <time itemprop="datePublished" dateTime="2022-04-25">25 kwi 2022</time>
-            <p itemprop="abstract">Tutaj skrót strótu do 55znaków? <a href="{% url 'blog_post' 1 %}">czytaj więcej --></a></p>
-        </div>
+        {% for blog_post in page_obj.object_list %}
+            {% include "blog/fragments/blog_node.html" with blog_post=blog_post%}
+        {% empty %}
+        <div>Żaden post nie spełnia wartunków filtrowania, spróbuj ustawić inne filtry lub je zresetuj <button>Resetuj filtry</button></div>
+        {% endfor %}
     </div>
     {% include "blog/fragments/pagination.html" with page_obj=page_obj%}
 </section>
@@ -55,12 +30,22 @@
 
 {% block sidePanel %}
 <div class="sidePanel__group">
-    Main tags
+    <h3 hidden>Główne filtry</h3>
+    <input type="date" id="dateFrom"/>
+    <input type="date" id="dateTo"/>
 </div>
 <div class="sidePanel__group">
-    Ingredients
-</div>
-<div class="sidePanel__group">
-    Kitchenware
+    <h3 hidden>Tagi</h3>
+    <div style="display:flex; flex-direction:column;">
+        <div>
+            <input type="checkbox" id="tagname1" checked><label for="tagname1">Nowe wpisy</label>
+        </div>
+        <div>
+            <input type="checkbox" id="tagname2" checked><label for="tagname2">Ulepszenia</label>
+        </div>
+        <div>
+            <input type="checkbox" id="tagname3" checked><label for="tagname3">Artykuły</label>
+        </div>
+    </div>
 </div>
 {% endblock  %}
