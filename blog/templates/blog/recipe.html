@@ -2,19 +2,18 @@
 
 {% block content_side %}
 <article>
-    <h1>Przepis - tytuł</h1>
+    <h1>{{recipe.name}}</h1>
     <div>[I][C][O]</div>
-    {% include "blog/fragments/ingredients_list.html" %}
+    {{ingredinets.qty}}
+    {% include "blog/fragments/ingredients_list.html" with ingredient_list=ingredinets.all %}
     <ol>
-        <li>Pokrój kukurydzę</li>
-        <li>Obierz truskawki</li>
-        <li>Zmierzw sałatę</li>
-        <li>Nastaw mikrofalę na 200&deg;C</li>
-        <li>Powtykaj kukurdzę do kolby</li>
+        {% for step in steps %}
+        <li>{{step}}</li>
+        {% endfor %}
     </ol>
     <div>
         <h2>Ciekwostki</h2>
-        <p>Tutaj różne utyskiwania i ciekawostki...</p> {% lorem 2 p random %}
+        {{recipe.content}}
     </div>
 </article>
 

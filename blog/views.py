@@ -2,17 +2,32 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator
+from django.conf import settings
 
-from blog.models import BlogPost
+from blog.models import BlogPost, Recipe
 
 # Create your views here.
 def index(request):
     return render(request, 'blog/index.html', context={})
 
 def recipes(request):
-    return render(request, 'blog/recipes.html', context={'test': ["a", "b", "c"]})
+    recipe_list = Recipe.objects.all()
+    paginator = Paginator(recipe_list, settings.PAGINATION)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'blog/recipes.html', context={
+        'page_obj': page_obj,
+        'filters': True
+    })
 
-def recipe(request, recipe_id):
+def recipe(request, recipe_slug):
+    recipe = get_object_or_404(Recipe, slug=recipe_slug)
+    return render(request, 'blog/recipe.html', context={
+        'recipe': recipe,
+        'ingredinets': recipe.ingredients.through.objects.all(),
+        'steps':[t.strip() for t in recipe.instructions.split(';')],
+        'filters': True
+    })
     return render(request, 'blog/recipe.html', context={})
 
 def packages(request):
@@ -32,7 +47,7 @@ def value(request):
 
 def blog(request):
     blog_list = BlogPost.objects.filter(publish_date__isnull=False).order_by('-publish_date')
-    paginator = Paginator(blog_list, 1)
+    paginator = Paginator(blog_list, settings.PAGINATION)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'blog/blog.html', context={

@@ -8,20 +8,13 @@
         <label for="duration">People</label>
     </div>
     <div class="shopping_list">
+        {% for ingredinet in ingredient_list %}
         <div class="shopping_list__ingredient">
-            <input type="checkbox"/>
-            <span> 2 sztuki </span>
-            <span>Mąki</span>
+            <input type="checkbox" id="ingredient_{{forloop.counter0}}"/>
+            <label for="ingredient_{{forloop.counter0}}"> {{ingredinet.qty}} </label>
+            <label for="ingredient_{{forloop.counter0}}"> {{ingredinet.unit.symbol}}</label>
+            <label for="ingredient_{{forloop.counter0}}"> {{ingredinet.ingredient}}</label>
         </div>
-        <div class="shopping_list__ingredient">
-            <input type="checkbox"/>
-            <span> 1 kg </span>
-            <span>Spagetti</span>
-        </div>
-        <div class="shopping_list__ingredient">
-            <input type="checkbox"/>
-            <span> 1/2 sztuki </span>
-            <span>Wody gazowanej</span>
-        </div>
+        {% endfor %}
     </div>
 </div>

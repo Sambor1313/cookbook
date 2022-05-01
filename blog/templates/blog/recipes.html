@@ -6,8 +6,8 @@
     Krótki wstęp
 </p>
 <section>
-    {% for recipe in test %}
-        {% include "blog/fragments/recipe_node.html" %}
+    {% for recipe in page_obj %}
+        {% include "blog/fragments/recipe_node.html" with recipe=recipe %}
     {% endfor %}
 </section>
 

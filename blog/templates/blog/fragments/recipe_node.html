@@ -1,9 +1,9 @@
 <article>
     <div class="recipe_node">
-        <h4><a href="{% url 'recipe' 1 %}">Nazwa dania</a></h4>
+        <h4><a href="{% url 'recipe' recipe.slug %}">{{recipe.name}}</a></h4>
         <div>[A][B][C]</div>
         <p>
-        {% lorem 1 random%} {{ "C'est un finite"|truncatewords:2 }}
+        {{ recipe.content|truncatechars:200 }}
         </p>
     <div>
 </article>
