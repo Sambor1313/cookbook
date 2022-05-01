@@ -1,0 +1,12 @@
+<article>
+    <div class="blogTOC__article" itemscope itemtype="https://schema.org/Blog">
+        <h2 itemprop="headline">
+            <a href="{% url 'blog_post' blog_post.pk %}">
+                {{blog_post.title}}
+            </a>
+        </h2>
+        <div>Type</div>
+        <span itemprop="author">{{blog_post.author}}</span> | <time itemprop="datePublished" dateTime="{{blog_post.publish_date|date:'Y-m-d'}}">{{blog_post.publish_date|date:'j E Y'}}</time>
+        <p itemprop="abstract">{{blog_post.short_content |truncatechars:200}} <a href="{% url 'blog_post' blog_post.pk %}">czytaj więcej --></a></p>
+    </div>
+</article>
