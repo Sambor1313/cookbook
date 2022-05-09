@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext as _
 from colorfield.fields import ColorField
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Recipe(models.Model):
@@ -113,7 +114,8 @@ class BlogPost(models.Model):
     publish_date = models.DateTimeField(_("publish date"), blank=True, null=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     short_content = models.TextField(_("short content"))
-    content = models.TextField(_("content"))
+    content = RichTextField(_("content"), blank=True, null=True)
+    #content = models.TextField(_("content"))
     tags = models.ManyToManyField("Tag", related_name='blog_post')
 
 
