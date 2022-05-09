@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Unit, Ingredient, Recipe, Kitchenware, IngredientsList, Package, BlogPost
+from .models import Unit, Ingredient, Recipe, Kitchenware, IngredientsList, Package, BlogPost, Tag
 
 # Register your models here.
 class UnitAdmin(admin.ModelAdmin):
@@ -36,6 +36,11 @@ admin.site.register(Package, PackageAdmin)
 
 
 class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'publish_date', 'author')
+    list_display = ('title', 'publish_date', 'author', 'tags_list')
 
 admin.site.register(BlogPost, BlogPostAdmin)
+
+class TagAdmin(admin.ModelAdmin):
+        list_display = ('name', 'description', 'color')
+
+admin.site.register(Tag, TagAdmin)

@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext as _
+from colorfield.fields import ColorField
 
 # Create your models here.
 class Recipe(models.Model):
@@ -113,6 +114,7 @@ class BlogPost(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     short_content = models.TextField(_("short content"))
     content = models.TextField(_("content"))
+    tags = models.ManyToManyField("Tag", related_name='blog_post')
 
 
     class Meta:
@@ -124,3 +126,45 @@ class BlogPost(models.Model):
 
     def get_absolute_url(self):
         return reverse("BlogPost_detail", kwargs={"pk": self.pk})
+
+    def tags_list(self):
+        try:
+            return ", ".join([t.name for t in self.tags.all()])
+        except:
+            return ""
+
+class Tag(models.Model):
+    name = models.CharField(max_length=32)
+    description = models.CharField(max_length=128)
+
+    COLOR_PALETTE = [
+        ('#FFFFFF', 'white', ),
+        ('#ff99cc', 'pink', ),
+        ('#ffb366', 'orange', ),
+        ('#4dff88', 'green', ),
+        ('#3399ff', 'blue', ),
+        ('#000066', 'navy', ),
+        ('#a64dff', 'purple', ),
+        ('#000000', 'black', ),
+    ]
+    color = ColorField(samples=COLOR_PALETTE)
+
+    #Type choice - for filtering and vary mechanisms
+    BLOG = 'BLOG'
+    DIET = 'DIET'
+    TYPE_CHOICES = [
+        (BLOG, 'Blog'),
+        (DIET, 'Diet ingredint')
+    ]
+    type_tag = models.CharField(choices=TYPE_CHOICES, max_length=4, null=True, blank=False)
+
+    class Meta:
+        verbose_name = _("Tag")
+        verbose_name_plural = _("Tags")
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("Tag_detail", kwargs={"pk": self.pk})
+
