@@ -11,9 +11,9 @@
 <section>
   <h2>Losowe przepisy <a>--></a></h2>
   <p>Tutaj tylko 3, ale zapraszam do książki, gdzie znajdziesz wiele więcej prostych, szybkich i tanich przepisów</p>
-  {% include "blog/fragments/recipe_node.html" %}
-  {% include "blog/fragments/recipe_node.html" %}
-  {% include "blog/fragments/recipe_node.html" %}
+  {% for recipe in recipe_list %}
+    {% include "blog/fragments/recipe_node.html" with recipe=recipe %}
+  {% endfor %}
 </section>
 
 
@@ -21,9 +21,12 @@
   <h2>Żarcie w zestawach</h2>
   <p>Generalnie to plan na tydzień obiadu = jedne szybkie zakupy i zrównoważona dieta? Bredzę!</p>
   <article>
-    <h3>Tyg. 12 - bazylia</h3>
+    <h3>{{package_random.name}}</h3>
     <div title="Sprzęt kuchenny">[A] [B] [D]</div>
     <p>Krótki wstęp, a może short-content?</p>
+    {% for recipe in package_random.meals.all %}
+      <span title="{{recipe.name}}">{{recipe.name}}</span>
+    {% endfor %}
   </article>
 </section>
 
@@ -43,11 +46,7 @@
 <section>
   <div>
     <h2>Blog <a>--></a></h2>
-    <article>
-      <h3>Zaczęło się</h3>
-      <p>Author | 13.04.2022</p>
-      <p>Krótki wstęp, a może short-content?</p>
-    </article>
+    {% include "blog/fragments/blog_node.html" with blog_post=blog_post %}
   </div>
 </section>
 

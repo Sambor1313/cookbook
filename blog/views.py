@@ -4,12 +4,33 @@ from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator
 from django.conf import settings
 
-from blog.models import BlogPost, Recipe
+from blog.models import BlogPost, Recipe, Package
 
-# Create your views here.
+# Home Page
 def index(request):
-    return render(request, 'blog/index.html', context={})
+    # Get three of random recipes
+    recipe_list = Recipe.objects.order_by('?')[:3]
 
+    # Get one random blogPost
+    blog_post = BlogPost.objects.order_by('?').first()
+
+    # Get one random package
+    package_random = Package.objects.order_by('?').first()
+
+    # Get one random foodpedia article
+    foodpedia_article = {
+        'name': 'Test - article'
+    }
+
+
+    return render(request, 'blog/index.html', context={
+        'recipe_list': recipe_list,
+        'package_random': package_random,
+        'foodpedia_article': foodpedia_article,
+        'blog_post': blog_post
+    })
+
+# Recipes - list of recipe with filters
 def recipes(request):
     recipe_list = Recipe.objects.all()
     paginator = Paginator(recipe_list, settings.PAGINATION)
@@ -43,7 +64,7 @@ def foodpedia_article(request, ingredient_id):
     return render(request, 'blog/foodpedia_article.html', context={})
 
 def value(request):
-    return render(request, 'blog/value.html', context={})
+    return render(request, 'blog/value.html')
 
 def blog(request):
     blog_list = BlogPost.objects.filter(publish_date__isnull=False).order_by('-publish_date')
