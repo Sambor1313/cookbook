@@ -1,6 +1,11 @@
 asgiref==3.5.0
 Django==4.0.3
+django-ckeditor==6.4.0
+django-colorfield==0.6.3
+django-filter==21.1
+django-js-asset==2.0.0
 mysqlclient==2.1.0
+Pillow==9.1.0
 python-decouple==3.6
 sqlparse==0.4.2
 tzdata==2022.1
